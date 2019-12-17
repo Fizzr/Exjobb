@@ -1,0 +1,84 @@
+\documentclass{article}
+
+\usepackage[parfill]{parskip}
+\usepackage[utf8]{inputenc}
+\usepackage[a4paper, left=35mm, right=35mm]{geometry}
+\usepackage{xcolor}
+\usepackage{hyperref}
+\hypersetup{
+    colorlinks,
+    linkcolor={red!50!black},
+    citecolor={blue!50!black},
+    urlcolor={blue!80!black}
+}
+
+
+\begin{document}
+\title{\vspace{-3cm}Master Thesis\\A Decentralized Agent-based Decision Support System for Traffic Control in Underground Mines}
+\author{Claes Andersson \\ Mobilaris}
+\maketitle
+
+\section*{Introduction}
+Mines are only narrow enough to accommodate for a single vehicle traveling down it. This is because digging mines is extremely expensive, and so it is kept at a minimum. Despite of this mines are populated with numerous vehicles of a wide variety. It is not uncommon for two vehicles traveling in opposite directions to attempt to traverse the same stretch of road, thus resulting in them coming to a full stop facing each other in the middle.
+
+Traffic congestion in mines is a severe problem. Additionally, some vehicles are not even allowed to stop at all for any reason. For example, a fully loaded truck driving in an upwards slope would be unable to start again if they came to a stop due to their heavy load, as well as emergency vehicles needing absolute priority in emergency situations. Optimizing traffic in underground mines is thus very important and could greatly increase efficiency, safety and profit but is so far an unexplored territory since it requires a high precision positioning-system. GPS systems cannot penetrate below the earth, and many of today’s positioning-solutions tend to have very poor accuracy. Although, with the increased prevalence of new and more accurate positioning systems in mines (e.g. UWB), traffic control has finally become a viable technology that can be used to increase flow of traffic in underground mining facilities.
+
+However, a challenge developing a traffic control system for underground mines is that very few mines have full network coverage. Some part of a mine might not even have coverage at all. This makes it hard to develop a centralized solution like an aviation airline traffic management system. Therefore, it might be more advantageous to develop a decentralized solution residing on the vehicles that autonomously aid the driver to prevent traffic jams.
+
+Mobilaris is currently developing a new product called Mobilars Onboard, which is a new navigation and indoor location system for underground mine that is indented to be installed in vehicles. It offers an interactive 3D map to allow users to become aware  of the traffic situation and close by vehicles. The goal of this master thesis project is to build on this concept but look a bit in to the future and explore the possibility to develop an expert system that can guide the user when and where to stop while also minimizing unnecessary waiting times. Every vehicle will independently make its own decision based on knowledge it currently possesses.
+
+\section*{Preexisting conditions}
+Mobilaris already have a product developed called Mobilaris Mining Intelligence, MMI. This system contains a comprehensive three dimensional map of the mine, and uses WiFi to give a rough positioning to people and vehicles in a mine. This is done by knowing where every WiFi access point in the mine is, and calculating signal strength to WiFi tags given to every person and vehicle and gives a position accurate to around one hundred meters. The system is also able to take positioning data from different positioning systems, like UWB.
+
+Mobilaris OnBoard is a brand new technology that is just about to be released. The OnBoard system provides the same data that MMI possesses on a 3D map on tablets to vehicles in the mine. Drivers of these vehicles thus get a complete overview of the mine in their hands. OnBoard is also bundled with a more accurate positioning system developed by Mobilars called the HybridPositioning, HybridP, system. Using sensors and and algorithms the HybridP system manages to position the vehicle to a few meters in the general case. This information is supplied back to MMI.
+
+The master thesis is to build on or interact with all of these technologies. Mobilaris also has almost free access to the Kristineberg mine, owned by Boliden, to conduct tests and experiments.
+
+\section*{Requirements}
+The expert system should meet the following requirements:
+\begin{enumerate}
+  \item It should be able to analyze data obtained from Mobilaris backend services to detect approaching vehicles.
+  \item Automatically decide priority (which vehicles should wait) based on vehicle types and direction.
+  \item Analyze the 3D map and suggest suitable meeting points.
+  \item Analyze the statistical uncertainty of the used positioning systems (both local and approaching vehicles) to decide the best meeting point. For example, if the approaching vehicles only have WiFi positioning with an accuracy of 100 meters, the system should adapt and add extra margins.
+  \item To obtain location of other vehicles, the system will synchronize with Mobilaris backend whenever possible, but it should be assumed that connectivity can be lost at any time. The system therefor always operates on old data. Hence, the system should be able to predict the location of other vehicles in case connectivity is lost while also handle the uncertainty of old data.
+  \item The system should prevent deadlocks that can occur if two or more vehicles have the same priority and the expert system decide that all approaching vehicles should wait.
+\end{enumerate}
+
+\section*{Method}
+A large part of the work will be spent on developing an experimental testbed. The following tasks should be conducted.
+\begin{enumerate}
+  \item Collect live data in one of Bolidens mines (Kristineberg).
+  \item Develop a simulator/emulator that is fed with collected data.
+  \item Develop an expert system using the simulator.
+  \item Use the simulator to evaluate different types of algorithms and parameters.
+  \item Deploy a proof-of-concept prototype by deploying the expert system in the Mobilaris Onboard application.
+  \item Make a live demo in the Kristineberg mine.
+  \item Summarize the findings in the master thesis report.
+\end{enumerate}
+
+\section*{Time Plan}
+\subsubsection*{Week 1-2 Literature study}
+
+Traffic control is a well researched area. The first part if the project should therefore be spent on reading prior articles, for example:
+
+\href{https://www.sciencedirect.com/science/article/pii/S1474667017526646}{ESTRAC-III: An Expert System for Train Traffic Control in Disturbed Situations}
+
+\href{https://ieeexplore.ieee.org/document/208646/}{The fundamental issues of an expert system for urban traffic control}
+
+\href{http://s-space.snu.ac.kr/bitstream/10371/90495/1/5.Knowledge-Based_Expert_System_in_Traffic_Signal_Control_Systems..pdf}{Knowledge-Based Expert System in Traffic Signal Control Systems}
+
+\href{https://www.slideshare.net/KartikShenoy1/expert-system-automated-traffic-light-control-based-on-road-congestion}{Expert System - Automated Traffic Light Control Based on Road Congestion}
+
+\href{https://link.springer.com/chapter/10.1007/978-1-4471-0575-6_8}{Fuzzy Rule-based Expert System for Real-Time Train Traffic Control}
+
+\subsubsection*{Week 3 – Revised project plan and delimitation.}
+
+\subsubsection*{Week 4 and forward – Develop a solution meeting the aforementioned requirements according to the suggested method.}
+
+The master thesis report should be written and updated throughout the entire project.
+
+\subsection*{Resources}
+The master thesis student will get full access to the Mobilaris office and all Mobilaris software. The student will also get help carrying out experiments in the Kristineberg mine. Johan Kristiansson will be the supervisor at Mobilaris.
+
+\end{document}
